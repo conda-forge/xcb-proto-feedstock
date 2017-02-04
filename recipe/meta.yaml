@@ -18,6 +18,7 @@ source:
     # Taken from http://www.linuxfromscratch.org/patches/blfs/svn/xcb-proto-1.12-schema-1.patch
     - xcb-proto-1.12-schema-1.patch
     - python-35x-fixes.patch
+    - windows-pythondir.patch  # [win]
 
 build:
   number: 1
@@ -39,6 +40,8 @@ requirements:
     - python
 
 test:
+  imports:
+    - xcbgen
   commands:
     - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
     - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
