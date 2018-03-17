@@ -14,10 +14,6 @@ source:
   url: https://www.x.org/releases/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.bz2
   sha256: {{ sha256 }}
   patches:
-    # This patch makes "make check" to work
-    # Taken from http://www.linuxfromscratch.org/patches/blfs/svn/xcb-proto-1.12-schema-1.patch
-    - xcb-proto-1.12-schema-1.patch
-    - python-35x-fixes.patch
     - windows-pythondir.patch  # [win]
 
 build:
