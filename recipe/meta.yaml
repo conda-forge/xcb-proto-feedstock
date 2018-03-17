@@ -1,8 +1,8 @@
 {% set xorg_name = "xcb-proto" %}
 {% set xorg_category = "xcb" %}
 {% set name = "xcb-proto" %}
-{% set version = "1.12" %}
-{% set sha256 = "5922aba4c664ab7899a29d92ea91a87aa4c1fc7eb5ee550325c3216c480a4906" %}
+{% set version = "1.13" %}
+{% set sha256 = "7b98721e669be80284e9bbfeab02d2d0d54cd11172b72271e47a2fe875e2bde1" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -21,7 +21,7 @@ source:
     - windows-pythondir.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
