@@ -14,14 +14,16 @@ Summary: Provides the XML-XCB protocol descriptions that libxcb uses to generate
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/xcb-proto-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/xcb-proto-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/xcb-proto-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/xcb-proto-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/xcb-proto-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/xcb-proto-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/xcb-proto-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/xcb-proto-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/xcb-proto-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/xcb-proto-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/xcb-proto-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/xcb-proto-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/xcb-proto/badges/version.svg)](https://anaconda.org/conda-forge/xcb-proto)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/xcb-proto/badges/downloads.svg)](https://anaconda.org/conda-forge/xcb-proto)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-xcb--proto-green.svg)](https://anaconda.org/conda-forge/xcb-proto) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/xcb-proto.svg)](https://anaconda.org/conda-forge/xcb-proto) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/xcb-proto.svg)](https://anaconda.org/conda-forge/xcb-proto) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/xcb-proto.svg)](https://anaconda.org/conda-forge/xcb-proto) |
 
 Installing xcb-proto
 ====================

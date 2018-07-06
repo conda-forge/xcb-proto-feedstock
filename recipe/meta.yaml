@@ -17,7 +17,7 @@ source:
     - windows-pythondir.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -26,11 +26,12 @@ requirements:
     - m2-automake{{ am_version }}  # [win]
     - m2-libtool  # [win]
     - m2w64-pkg-config  # [win]
-    - m2w64-toolchain  # [win]
     - pkg-config  # [not win]
     - posix  # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
     - python
-    - toolchain
     - xorg-util-macros
   run:
     - python

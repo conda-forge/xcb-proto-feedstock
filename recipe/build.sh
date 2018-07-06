@@ -21,7 +21,7 @@ else
 fi
 
 # On Windows we need to regenerate the configure scripts.
-if [ -n "$VS_MAJOR" ] ; then
+if [ -n "$CYGWIN_PREFIX" ] ; then
     am_version=1.15 # keep sync'ed with meta.yaml
     export ACLOCAL=aclocal-$am_version
     export AUTOMAKE=automake-$am_version
@@ -29,7 +29,7 @@ if [ -n "$VS_MAJOR" ] ; then
         --force
         --install
         -I "$mprefix/share/aclocal"
-        -I "$mprefix/mingw-w64/share/aclocal" # note: this is correct for win32 also!
+        -I "$BUILD_PREFIX_M/Library/mingw-w64/share/aclocal"
     )
     autoreconf "${autoreconf_args[@]}"
 fi
