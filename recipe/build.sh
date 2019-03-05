@@ -1,6 +1,7 @@
 #! /bin/bash
 
 set -e
+set -x
 IFS=$' \t\n' # workaround for conda 4.2.13+toolchain bug
 
 # Adopt a Unix-friendly path if we're on Windows (see bld.bat).
@@ -32,10 +33,25 @@ if [ -n "$CYGWIN_PREFIX" ] ; then
         -I "$BUILD_PREFIX_M/Library/mingw-w64/share/aclocal"
     )
     autoreconf "${autoreconf_args[@]}"
+else
+    # for other platforms we just need to reconf to get the correct achitecture
+    echo libtoolize
+    libtoolize
+    echo aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
+    aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
+    echo autoheader
+    autoheader
+    echo autoconf
+    autoconf
+    echo automake --force-missing --add-missing --include-deps
+    automake --force-missing --add-missing --include-deps
+
+    export CONFIG_FLAGS="--build=${BUILD}"
 fi
 
 export PKG_CONFIG_LIBDIR=$uprefix/lib/pkgconfig:$uprefix/share/pkgconfig
 configure_args=(
+    $CONFIG_FLAGS
     --prefix=$mprefix
     --disable-dependency-tracking
     --disable-selective-werror
