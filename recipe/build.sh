@@ -39,8 +39,6 @@ else
     libtoolize
     echo aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
     aclocal -I $PREFIX/share/aclocal -I $BUILD_PREFIX/share/aclocal
-    echo autoheader
-    autoheader
     echo autoconf
     autoconf
     echo automake --force-missing --add-missing --include-deps
