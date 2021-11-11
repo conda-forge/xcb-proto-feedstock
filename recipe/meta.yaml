@@ -18,7 +18,7 @@ source:
     - fix-deprecated-gcd.patch
 
 build:
-  number: 1007
+  number: 1008
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -45,9 +45,13 @@ requirements:
     - python
 
 test:
+  requires:
+    - m2w64-pkg-config  # [win]
+    - pkg-config        # [not win]
   imports:
     - xcbgen
   commands:
+    - pkg-config --variable=pythondir xcb-proto
 
 about:
   home: http://xcb.freedesktop.org/

@@ -47,6 +47,11 @@ else
     export CONFIG_FLAGS="--build=${BUILD}"
 fi
 
+# The $pythondir variable is inserted into xcb-proto.pc. In newer automakes the
+# default version of this variable references $PYTHON_PREFIX, which causes
+# pkg-config to error out. Work around by setting it ourselves.
+export am_cv_python_pythondir="$(python -c "import sysconfig; print(sysconfig.get_path('purelib'))")"
+
 export PKG_CONFIG_LIBDIR=$uprefix/lib/pkgconfig:$uprefix/share/pkgconfig
 configure_args=(
     $CONFIG_FLAGS
