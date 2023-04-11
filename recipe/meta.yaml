@@ -14,7 +14,6 @@ source:
   sha256: {{ sha256 }}
   patches:
     - windows-pythondir.patch  # [win]
-    - fix-deprecated-gcd.patch
 
 build:
   number: 1010
