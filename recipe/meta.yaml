@@ -1,8 +1,7 @@
 {% set xorg_name = "xcb-proto" %}
 {% set xorg_category = "proto" %}
 {% set name = "xcb-proto" %}
-{% set version = "1.15" %}
-{% set sha256 = "0e434af76af722ef9b2dc21066da1cd11e5dd85fc1996d66228d090f9ae9b217" %}
+{% set version = "1.16.0" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -11,12 +10,12 @@ package:
 
 source:
   url: https://xorg.freedesktop.org/archive/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: d9c7f010b1105fc3858bf07b5169b2dd8e7493c6652b1fe45f3321d874f291d7
   patches:
     - windows-pythondir.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -50,7 +49,7 @@ test:
     - xcbgen
   commands:
     - pkg-config --variable=pythondir xcb-proto  # [not win]
-    - set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig" && pkg-config --variable=pythondir xcb-proto  # [win]
+    - set "PKG_CONFIG_PATH=%LIBRARY_PREFIX%\share\pkgconfig" && pkg-config --variable=pythondir xcb-proto  # [win]
 
 about:
   home: http://xcb.freedesktop.org/
