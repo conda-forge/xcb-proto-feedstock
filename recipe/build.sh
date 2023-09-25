@@ -32,7 +32,15 @@ if [ -n "$CYGWIN_PREFIX" ] ; then
         -I "$mprefix/share/aclocal"
         -I "$BUILD_PREFIX_M/Library/mingw-w64/share/aclocal"
     )
+    # 2023/09: our automake-1.15 package provides a version of the py-compile
+    # script that is so old that it's missing a modification that is required to
+    # build on Python 3.12. But the source package's file does have it, so we
+    # can avoid the issue by backing up that file and restoring it. The
+    # intention is that the MSYS2 packages will be updated pretty soon
+    # (~months), at which point it should be possible to remove this workaround.
+    mv py-compile py-compile.bak
     autoreconf "${autoreconf_args[@]}"
+    mv -f py-compile.bak py-compile
 else
     # for other platforms we just need to reconf to get the correct achitecture
     echo libtoolize
