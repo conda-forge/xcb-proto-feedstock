@@ -1,7 +1,7 @@
 {% set xorg_name = "xcb-proto" %}
 {% set xorg_category = "proto" %}
 {% set name = "xcb-proto" %}
-{% set version = "1.16.0" %}
+{% set version = "1.17.0" %}
 {% set am_version = "1.15" %} # keep synchronized with build.sh
 
 package:
@@ -10,12 +10,12 @@ package:
 
 source:
   url: https://xorg.freedesktop.org/archive/individual/{{ xorg_category }}/{{ xorg_name }}-{{ version }}.tar.gz
-  sha256: d9c7f010b1105fc3858bf07b5169b2dd8e7493c6652b1fe45f3321d874f291d7
+  sha256: 392d3c9690f8c8202a68fdb89c16fd55159ab8d65000a6da213f4a1576e97a16
   patches:
     - windows-pythondir.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   detect_binary_files_with_prefix: true
 
 requirements:
