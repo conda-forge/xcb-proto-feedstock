@@ -15,7 +15,7 @@ source:
     - windows-pythondir.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   detect_binary_files_with_prefix: true
 
 requirements:
@@ -29,7 +29,9 @@ requirements:
     - pkg-config                    # [not win]
     - posix                         # [win]
     - {{ compiler('c') }}           # [unix]
+    - {{ stdlib("c") }}             # [unix]
     - {{ compiler('m2w64_c') }}     # [win]
+    - {{ stdlib("m2w64_c") }}       # [win]
     - make                          # [unix]
     - autoconf                      # [unix]
     - automake                      # [unix]
