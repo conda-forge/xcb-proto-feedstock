@@ -15,24 +15,24 @@ source:
     - windows-pythondir.patch  # [win]
 
 build:
-  number: 1
+  number: 2
   detect_binary_files_with_prefix: true
 
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
+    - pkg-config
     - m2-autoconf                   # [win]
     - m2-automake{{ am_version }}   # [win]
     - m2-libtool                    # [win]
-    - m2w64-pkg-config              # [win]
-    - pkg-config                    # [not win]
-    - posix                         # [win]
+    - m2-base                         # [win]
     - {{ compiler('c') }}           # [unix]
     - {{ stdlib("c") }}             # [unix]
     - {{ compiler('m2w64_c') }}     # [win]
     - {{ stdlib("m2w64_c") }}       # [win]
     - make                          # [unix]
+    - m2-make                       # [win]
     - autoconf                      # [unix]
     - automake                      # [unix]
     - gettext                       # [unix]
@@ -45,8 +45,7 @@ requirements:
 
 test:
   requires:
-    - m2w64-pkg-config  # [win]
-    - pkg-config        # [not win]
+    - pkg-config
   imports:
     - xcbgen
   commands:
