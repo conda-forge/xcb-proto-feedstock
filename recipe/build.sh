@@ -30,7 +30,7 @@ if [ -n "$CYGWIN_PREFIX" ] ; then
         --force
         --install
         -I "$mprefix/share/aclocal"
-        -I "$BUILD_PREFIX_M/Library/mingw-w64/share/aclocal"
+        -I "$BUILD_PREFIX_M/Library/usr/share/aclocal"
     )
     # 2023/09: our automake-1.15 package provides a version of the py-compile
     # script that is so old that it's missing a modification that is required to
