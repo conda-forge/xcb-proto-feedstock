@@ -50,8 +50,7 @@ test:
   imports:
     - xcbgen
   commands:
-    - pkg-config --variable=pythondir xcb-proto  # [not win]
-    - set "PKG_CONFIG_PATH=%LIBRARY_PREFIX%\share\pkgconfig" && pkg-config --variable=pythondir xcb-proto  # [win]
+    - pkg-config --variable=pythondir xcb-proto
 
 about:
   home: http://xcb.freedesktop.org/
