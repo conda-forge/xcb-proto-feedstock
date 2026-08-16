@@ -1,0 +1,10 @@
+# use the m2w64 compiler setup, and match the compiler version pins with the rest of conda-forge, c.f.
+# https://github.com/conda-forge/conda-forge-pinning-feedstock/blob/main/recipe/conda_build_config.yaml
+c_stdlib:                   # [win]
+  - m2w64-sysroot           # [win]
+c_stdlib_version:           # [win]
+  - 12                      # [win]
+c_compiler:                 # [win]
+  - gcc                     # [win]
+c_compiler_version:         # [win]
+  - 15                      # [win]

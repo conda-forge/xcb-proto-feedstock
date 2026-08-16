@@ -1,0 +1,77 @@
+context:
+  version: "1.17.0"
+  #  keep synchronized with build.sh
+  am_version: "1.15"
+
+package:
+  name: xcb-proto
+  version: ${{ version }}
+
+source:
+  url: https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-${{ version }}.tar.gz
+  sha256: 392d3c9690f8c8202a68fdb89c16fd55159ab8d65000a6da213f4a1576e97a16
+  patches:
+    - if: win
+      then: windows-pythondir.patch
+
+build:
+  noarch: python
+  number: 5
+  prefix_detection:
+    ignore_binary_files: false
+
+requirements:
+  build:
+    # uses m2w64 toolchain on windows, see conda_build_config.yaml
+    - ${{ stdlib("c") }}
+    - ${{ compiler("c") }}
+    - pkg-config
+    - if: unix
+      then:
+        - autoconf
+        - automake
+        - gettext
+        - libtool
+        - make
+      else:
+        - m2-autoconf
+        - m2-automake${{ am_version }}
+        - m2-base
+        - m2-libtool
+        - m2-make
+  host:
+    - python ${{ python_min }}.*
+    - xorg-util-macros
+  run:
+    - python >=${{ python_min }}
+    - if: unix
+      then: __unix
+      else: __win
+  ignore_run_exports:
+    from_package:
+      - ${{ stdlib("c") }}
+      - ${{ compiler("c") }}
+
+tests:
+  - python:
+      imports:
+        - xcbgen
+      python_version:
+        - ${{ python_min }}
+        - "*"
+  - requirements:
+      run:
+        - pkg-config
+    script:
+      - pkg-config --variable=pythondir xcb-proto
+
+about:
+  homepage: http://xcb.freedesktop.org/
+  license: MIT
+  license_file: COPYING
+  summary: "Provides the XML-XCB protocol descriptions that libxcb uses to generate the majority of its code and API"
+
+extra:
+  recipe-maintainers:
+    - ccordoba12
+    - pkgw
